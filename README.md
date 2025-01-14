@@ -1,5 +1,12 @@
 # Learning Project: Anonymous Sign in
 
+This project shows how we can leverage the built in authentication generator `bin/rails generate authentication`
+and modify it to support Anonymous (aka Guest) sign in.
+
+As a guest they can create an account to get full access to the application.
+
+## Raw notes
+
 How do we have an anonymous sign in?
 
 User can go directly to demo with a full user object (that's anonoymous).
