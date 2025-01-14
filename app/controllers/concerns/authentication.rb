@@ -10,9 +10,20 @@ module Authentication
     def allow_unauthenticated_access(**options)
       skip_before_action :require_authentication, **options
     end
+
+    def allow_anonymous_access(**options)
+      skip_before_action :require_authentication, **options
+      before_action :start_anonymous_session, **options
+    end
   end
 
   private
+    def start_anonymous_session
+      session[:return_to_after_authenticating] = request.url
+      return resume_session if authenticated?
+      redirect_to create_anonymous_session_path
+    end
+
     def authenticated?
       resume_session
     end
