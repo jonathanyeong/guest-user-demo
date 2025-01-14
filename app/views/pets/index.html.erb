@@ -1,9 +1,15 @@
-<h1 class="text-4xl mb-8 font-extrabold block">Albie Pet Pics!</h1>
+<div class="mx-auto w-2/3">
+  <h1 class="text-4xl mb-8 font-extrabold block">Albie Pet Pics!</h1>
 
-<%= image_tag "albie_tired.jpeg", alt: "Sleepy Albie", class: "block" %>
-<% if @user.anonymous? %>
-  <p>Want to see more?</p>
-<% else %>
-  <p>OH HAI you're a real user. Here's another picture of Albie!</p>
-  <%= image_tag "/images/albie_needs_attention.jpeg", alt: "Albie needing some attention" %>
-<% end %>
+  <%= image_tag "albie_tired.jpeg", alt: "Sleepy Albie", class: "block" %>
+  <% if @user.anonymous? %>
+    <p>Want to see more?</p>
+    <button popovertarget="my-popover" class="text-gray-700 underline">Create your account!</button>
+    <%= render "shared/create_account" %>
+  <% else %>
+    <p>OH HAI you're a real user. Here's another picture of Albie!</p>
+    <%= image_tag "/images/albie_needs_attention.jpeg", alt: "Albie needing some attention" %>
+  <% end %>
+  </div>
+</div>
+
