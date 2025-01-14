@@ -1,24 +1,69 @@
-# README
+# Learning Project: Anonymous Sign in
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+How do we have an anonymous sign in?
 
-Things you may want to cover:
+User can go directly to demo with a full user object (that's anonoymous).
+Then they can authenticate with credentials.
 
-* Ruby version
+Everyone has read access
+Inserts only for itself
+Depending on some actions, we must have an authenticated user. The jwt has an `is_anonymous` field set to false.
 
-* System dependencies
+Anonymous user that has provided credentials is not an anonymous user.
 
-* Configuration
+Supabase is what I'm basing it off.
 
-* Database creation
+Here's the anonymous user response from supabase
 
-* Database initialization
+```json
+{
+  user: {
+    id: '6e3e15d5-3f99-4382-93ed-cdbed200583b',
+    aud: 'authenticated',
+    role: 'authenticated',
+    email: '',
+    phone: '',
+    last_sign_in_at: '2025-01-14T02:37:50.895707376Z',
+    app_metadata: {},
+    user_metadata: {},
+    identities: [],
+    created_at: '2025-01-14T02:37:50.893138Z',
+    updated_at: '2025-01-14T02:37:50.897343Z',
+    is_anonymous: true
+  },
+  session: {
+    access_token: 'ACCESS_TOKEN',
+    token_type: 'bearer',
+    expires_in: 3600,
+    expires_at: 1736825870,
+    refresh_token: 'REFRESH_TOKEN',
+    user: {
+      id: '6e3e15d5-3f99-4382-93ed-cdbed200583b',
+      aud: 'authenticated',
+      role: 'authenticated',
+      email: '',
+      phone: '',
+      last_sign_in_at: '2025-01-14T02:37:50.895707376Z',
+      app_metadata: {},
+      user_metadata: {},
+      identities: [],
+      created_at: '2025-01-14T02:37:50.893138Z',
+      updated_at: '2025-01-14T02:37:50.897343Z',
+      is_anonymous: true
+    }
+  }
+}
+```
 
-* How to run the test suite
+Supabase User DB has:
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+```
+uuid
+disply name
+email
+phone
+providers (Email)
+Provider Type (Anonymous)
+Created At
+Last Sign In at
+```
