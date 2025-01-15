@@ -1,0 +1,8 @@
+<% if @user.anonymous? %>
+  <p>Want to see more?</p>
+  <button popovertarget="my-popover" class="text-gray-700 underline">Create your account!</button>
+  <%= render "shared/create_account" %>
+<% else %>
+  <p>OH HAI you're a real user. Here's another picture of Albie!</p>
+  <%= image_tag "/images/albie_needs_attention.jpeg", alt: "Albie needing some attention" %>
+<% end %>

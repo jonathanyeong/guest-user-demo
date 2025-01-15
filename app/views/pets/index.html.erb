@@ -2,14 +2,8 @@
   <h1 class="text-4xl mb-8 font-extrabold block">Albie Pet Pics!</h1>
 
   <%= image_tag "albie_tired.jpeg", alt: "Sleepy Albie", class: "block rounded-lg brightness-95" %>
-  <% if @user.anonymous? %>
-    <p>Want to see more?</p>
-    <button popovertarget="my-popover" class="text-gray-700 underline">Create your account!</button>
-    <%= render "shared/create_account" %>
-  <% else %>
-    <p>OH HAI you're a real user. Here's another picture of Albie!</p>
-    <%= image_tag "/images/albie_needs_attention.jpeg", alt: "Albie needing some attention",  class: "block rounded-lg brightness-95"  %>
+  <%= turbo_frame_tag "user_content" do %>
+    <%= render "user_content" %>
   <% end %>
-  </div>
 </div>
 

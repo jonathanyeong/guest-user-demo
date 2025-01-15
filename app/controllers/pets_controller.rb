@@ -3,5 +3,9 @@ class PetsController < ApplicationController
 
   def index
     @user = Current.session.user
+    respond_to do |format|
+      format.html
+      format.turbo_stream { render turbo_stream: turbo_stream.update("user_content", partial: "user_content") }
+    end
   end
 end
